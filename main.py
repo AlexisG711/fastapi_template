@@ -11,7 +11,7 @@ bucket_name = os.getenv('S3_BUCKET_NAME')
 
 @app.get("/ping")
 async def ping():
-    return {"message": "pong"}
+    return {"message": "test"}
 
 @app.post("/upload/")
 async def upload_file(file: UploadFile = File(...)):

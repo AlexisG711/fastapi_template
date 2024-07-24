@@ -1,4 +1,4 @@
-#!/Users/gonzalez/code/fastapi_template/myenv/bin/python3.12
+#!/Users/gonzalez/code/fastapi_template/myenv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
