@@ -36,9 +36,9 @@ jobs:
         env:
           EC2_USER: ${{ secrets.EC2_USER }}
           EC2_HOST: ${{ secrets.EC2_HOST }}
-          SSH_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          SSH_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY_BASE64 }}
         run: |
-          echo "$SSH_KEY" > private_key.pem
+          echo "$SSH_KEY_BASE64" | base64 --decode > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem $EC2_USER@$EC2_HOST << 'EOF'
             # Change to the application directory
