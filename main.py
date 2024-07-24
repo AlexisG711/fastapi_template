@@ -1,15 +1,17 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
+import os
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
 import boto3
-import os
 from botocore.exceptions import NoCredentialsError
 
 app = FastAPI()
 
 s3 = boto3.client('s3')
-
 bucket_name = os.getenv('S3_BUCKET_NAME')
 
+@app.get("/ping")
+async def ping():
+    return {"message": "pong"}
 
 @app.post("/upload/")
 async def upload_file(file: UploadFile = File(...)):
